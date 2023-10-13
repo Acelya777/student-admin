@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HeaderComponent} from './header/header.component'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -39,28 +39,87 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { StudentComponent } from './student/student.component';
 import { ViewStudentComponent } from './student/view-student/view-student.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ServiceService } from './student/services/service.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LogoutComponent } from './logout/logout.component';import { HttpInterceptorServiceService } from './login/loginService/http-interceptor-service.service';
-import { LoginServiceService } from './login/loginService/login-service.service';
- '@angular/common/http'
+import { TokenInterceptor } from 'src/app/helpers/token.interceptor';
+import { FileService } from './file/file-user/file.service';
+import { FileUserComponent } from './file/file-user/file-user.component';
+import { MenuComponent } from './menu/menu.component';
+import { FileComponent } from './file/file.component';
+import { DialogComponent } from './file/dialog/dialog.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    StudentComponent,
+    ViewStudentComponent,
+    LoginComponent,
+    FileUserComponent,
+    MenuComponent,
+    FileComponent,
+    DialogComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatListModule,
+    MatStepperModule,
+    MatTabsModule,
+    MatTreeModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatBadgeModule,
+    MatChipsModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatRippleModule,
+    MatBottomSheetModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatSidenavModule
+
   ],
-  providers: [],
+  schemas:[
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+  providers: [
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

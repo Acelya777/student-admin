@@ -1,0 +1,124 @@
+<div class="page-header m-0">
+  <div class="container-fluid header ">
+    <h2>Filenet Kullanıcıları</h2>
+    <div class="col-lg-1">
+      <div  >
+        <button type="button" class="btn " (click)="logout()" >
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-sidenav-container class="sidenav-container " style="height: 100%; width: 100%;">
+  <mat-sidenav #sidebar mode="side" [opened]="isSidebarOpen" style=" background: rgb(177, 166, 235);">
+    <mat-list>
+      <div mat-subheader>Folders</div>
+      <mat-list-item *ngFor="let folder of document">
+        <div style="display: flex;" (click)="selectFile(folder.id)">
+        <mat-icon matListItemIcon  [routerLink]="['/file/',folder.id]">folder</mat-icon>
+        <button class="m-2" type="button" class="btn btn-link text-dark" >{{folder.folderName}}</button>
+      </div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+      
+       <div class="row" style="justify-content: center;
+       padding: 10px;">
+        
+        <div class="row mt-3" style="justify-content: space-between;">
+          <!-- <button mat-raised-button (click)="clearTable()">Clear table</button> -->
+          <div class="col-lg-2">
+            <button type="button" class="btn"
+             (click)="toggleOffcanvas()" >
+              <mat-icon>arrow_forward</mat-icon>
+            </button> 
+          </div>
+          <div class="col-lg-2">
+              <button mat-raised-button routerLink="/user/ekle">Kullanıcı Ekle</button>
+          </div>
+          <div class="col-sm-4">
+          <div class="input-group rounded">
+            <input type="search" class="form-control rounded" [(ngModel)]="filterString" (keyup)="filterStudent()" placeholder="Ara"/>
+            <span class="input-group-text border-0" id="search-addon">
+              <mat-icon>search</mat-icon>
+            </span>
+          </div>
+        </div>
+        </div> 
+          <div class="mat-elevation mx-0 mt-3" >
+            <table class="shadow-lg" mat-table [dataSource]="dataSource" matSort  >
+    
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+    
+            <!-- Position Column -->
+            <ng-container matColumnDef="Id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+              <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="prp_tc">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> TC </th>
+              <td mat-cell *matCellDef="let element"> {{element.prp_tc}} </td>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="prp_Ad">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>İsim </th>
+              <td mat-cell *matCellDef="let element"> {{element.prp_Ad}} </td>
+            </ng-container>
+            <ng-container matColumnDef="prp_soyisim">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Soyadı</th>
+              <td mat-cell *matCellDef="let element"> {{element.prp_soyisim}} </td>
+            </ng-container>
+            <!-- Weight Column -->
+            <ng-container matColumnDef="prp_IrtibatKisisiEmail">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> mail </th>
+              <td mat-cell *matCellDef="let element"> {{element.prp_IrtibatKisisiEmail}} </td>
+            </ng-container>
+            <ng-container matColumnDef="DocumentTitle">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>DocumentTitle</th>
+              <td mat-cell *matCellDef="let element"> {{element.DocumentTitle}} </td>
+            </ng-container>
+            <ng-container matColumnDef="edit">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let element">
+                <a [routerLink]="['/user/',element.Id]">
+                  <mat-icon>edit</mat-icon>
+                </a>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="delete" >
+              <th mat-header-cell *matHeaderCellDef=""></th>
+              <td mat-cell *matCellDef="let element"  >
+                
+                  <mat-icon (click)="onDelete(element.Id)" style="color: brown;">delete</mat-icon>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="download">
+              <th mat-header-cell *matHeaderCellDef=""></th>
+              <td mat-cell *matCellDef="let element">
+                  <mat-icon (click)="onDownload(element.Id)" style="color: rgb(63, 213, 55);">download</mat-icon>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="moving">
+              <th mat-header-cell *matHeaderCellDef=""></th>
+              <td mat-cell *matCellDef="let element">
+                  <mat-icon (click)="onMoving(element.Id)" [queryParams]="{ userId: element.Id }" style="color: rgb(165, 151, 42);">luggage</mat-icon>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                        showFirstLastButtons
+                        aria-label="Select page of periodic elements">
+          </mat-paginator>
+        </div>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
