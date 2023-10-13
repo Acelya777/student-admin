@@ -1,0 +1,15 @@
+label{
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+.col-lg-1{
+  display: flex;
+  align-items: center;
+}
+.header{
+ display: flex;
+ justify-content: space-between;
+}
+.page{
+  margin-top: 200px;
+}

@@ -1,0 +1,12 @@
+
+
+
+    .card {
+      /* Card'ın genişliği ve diğer özellikleri */
+      max-width: 400px; /* İstediğiniz genişlik değerini kullanabilirsiniz */
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }

@@ -1,0 +1,31 @@
+table{
+  width: 100%;
+}
+
+.col-lg-1{
+  display: flex;
+  align-items: center;
+}
+.header{
+ display: flex;
+ justify-content: space-between;
+}
+.mat-drawer{
+  width: 350px;
+}
+
+mat-sidenav-container{
+  flex: 1;
+}
+
+mat-sidenav-content{
+  background: rgb(150, 135, 222);
+}
+
+p{
+  margin: 0px;
+}
+
+mat-paginator{
+  width: 100%;
+}

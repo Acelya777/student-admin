@@ -1,0 +1,28 @@
+<div style="height: 100%; margin: 0; align-items: center;
+display: flex;">
+<div class="container col-xxl-6 mt-2 " style="display: flex; align-items: center;justify-content: center;">
+  <div class="rol">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <form class="form-group" >
+          <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+          <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+          <div class="form-group mt-2">
+            <label for="email">Username:</label>
+            <input type="text" class="form-control"  id="username" [(ngModel)]="username" placeholder="Kullanıcı adını girin..."
+              name="username">
+          </div>
+          <div class="form-group mt-2">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" [(ngModel)]="password" id="password" placeholder="Şifreyi girin..."
+              name="password">
+          </div>
+          <div class="form-group mt-2"
+          style="display: flex; justify-content: center;">
+            <button (click)=handleLogin() class="btn btn-danger">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

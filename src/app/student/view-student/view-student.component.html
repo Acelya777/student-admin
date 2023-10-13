@@ -1,0 +1,89 @@
+<div class="page-header">
+  <div class="container header">
+    <h2>{{header}}</h2>
+    <div class="col-lg-1">
+      <div (click)="logout()" >
+        <button type="button" class="btn " >
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="row" >
+    <div class="col-lg-2 mt-3">
+      <button type="button" class="btn btn-outline-dark"
+      routerLink="/student"
+      style="display: flex;
+      justify-content: center;
+      align-items: center;">
+        <mat-icon>arrow_back</mat-icon>
+        Geri Dön
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-10">
+      <form>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label >Ad</label>
+              <input type="text" class="form-control" [disabled]="!ready" [(ngModel)]="student.name" name="name" placeholder="Adınızı giriniz..">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label >Soyad</label>
+              <input type="text" class="form-control" [disabled]="!ready" [(ngModel)]="student.surname" name="surname"  placeholder="Soyadınız giriniz..">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mt-4">
+            <label>Email </label>
+            <input type="email" class="form-control" [disabled]="!ready" [(ngModel)]="student.mail" name="email" placeholder="Emailinizi giriniz..">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mt-4">
+            <label >Mezun olduğunuz departman </label>
+            <input type="text" class="form-control" [disabled]="!ready" [(ngModel)]="student.department" name="department" placeholder="departmanınızı giriniz..">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="form-group">
+            <label>Adres</label>
+            <textarea class="form-control"  rows="5" [disabled]="!ready" [(ngModel)]="student.address" name="address" placeholder="Adresinizi giriniz.."></textarea>
+          </div>
+        </div>
+      </form>
+      <!-- <form method="POST"  enctype="multipart/form-data">
+        <div class="row mt-4">
+            <label for="formFileSm" class="form-label">Small file input example</label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file">
+        </div>
+      </form> -->
+
+    </div>
+  </div>
+  <div class="row mt-3"  >
+    <div style="display: flex; justify-content: space-between;" *ngIf="!isNewStudent">
+      <button type="button" (click)="onUpdate()"  class="btn btn-dark">Kaydet</button>
+      <button type="button" (click)="onDelete()" class="btn btn-danger">Sil</button>
+    </div>
+    <div style="display: flex; justify-content: space-between;" *ngIf="isNewStudent">
+      <button type="button" (click)="onAdd()"  class="btn btn-dark">Kaydet</button>
+    </div>
+  </div>
+</div>
+

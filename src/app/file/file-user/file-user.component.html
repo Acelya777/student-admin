@@ -1,0 +1,71 @@
+<div class="container">
+    <div class="row" >
+    <div class="col-lg-2 mt-5">
+                <button type="button" class="btn btn-outline-dark"
+                (click)="onLastPage()"
+                style="display: flex;
+                justify-content: center;
+                align-items: center;">
+                  <mat-icon>arrow_back</mat-icon>
+                  Geri Dön
+                </button>
+     </div>
+       
+     <div class="col-lg-8 mt-5">
+      <form>
+        <div class="row">
+            <div class="form-group mt-4">
+              <label>TC</label>
+              <input type="text" class="form-control" [(ngModel)]="user.prp_tc" name="TC" placeholder="TC giriniz..">
+              <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+          <div class="row">
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label >Ad</label>
+              <input type="text" class="form-control" [(ngModel)]="user.prp_Ad"  name="name" placeholder="Adınızı giriniz..">
+              <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="form-group">
+              <label >Soyad</label>
+              <input type="text" class="form-control" [(ngModel)]="user.prp_soyisim"  name="surname"  placeholder="Soyadınız giriniz..">
+              <small  class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group mt-4">
+            <label>Email </label>
+            <input type="email" class="form-control"  [(ngModel)]="user.prp_IrtibatKisisiEmail" name="email" placeholder="Emailinizi giriniz..">
+            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group mt-4">
+            <label>Dosya Adı: </label>
+            <input type="email" class="form-control"  [(ngModel)]="user.DocumentTitle" name="documentTitle" placeholder="Dosya adını giriniz..">
+            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+        </div>
+        <div class="row m-2">
+            <label for="formFileSm" class="form-label">Dosya:</label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file"(change)="onFileSelected($event)">
+        </div>
+        <div class="row mt-3"  >
+          <div style="display: flex; justify-content: space-between;" *ngIf="!isNewStudent">
+            <button type="button" (click)="onUpdate()"  class="btn btn-dark">Kaydet</button>
+            <button type="button" (click)="onChangeFile()"  class="btn btn-info">Dosyayı Kaydet</button>
+          </div>
+          <div style="display: flex; justify-content: end;" *ngIf="isNewStudent">
+            <button type="button" (click)="uploadFile()"  class="btn btn-dark">Kaydet</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+</div>
